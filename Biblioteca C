@@ -1,0 +1,43 @@
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <ctype.h>
+
+typedef struct
+{
+    char content[100];
+}array;
+
+
+array sort(array list)
+{
+    for(int i = 0; isalnum(list.content[i]); i++)
+    {
+        for(int j = i; isalnum(list.content[j]); j++)
+        {
+            if(list.content[i] > list.content[j])
+            {
+                int aux = list.content[j];
+                list.content[j] = list.content[i];
+                list.content[i] = aux;
+            }
+        }
+    }
+    return list;
+}
+
+
+int length(array list)
+{
+    int index = 0;
+    int len = 0;
+
+    while(isalnum(list.content[index]))
+    {
+        index++;
+        len++;
+    }
+
+    return len;
+}
