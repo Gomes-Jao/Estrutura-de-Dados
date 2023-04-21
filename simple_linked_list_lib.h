@@ -347,5 +347,13 @@ void conc(node **list1, node **list2)
             aux2 = aux2->next;
         }
     }
-    else printf("Ambas as lists vazias\n");
+    else printf("Ambas as listas vazias\n");
+}
+
+void create_list(node *var)
+{
+    var = malloc(sizeof(node));
+
+    if(!var) printf("Erro ao alocar memória.\n");
+    else var->next = NULL;
 }
