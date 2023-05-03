@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+void show(node *stack);
+void pop(node **stack);
+int top(node *stack);
+void push(node **stack, int value);
+int length(node *stack);
+void create_stack(node *var);
+
 typedef struct{
     int info;
     struct node *next;
