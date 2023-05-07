@@ -39,7 +39,7 @@ void pop(node **stack)
         *stack = (*stack)->next;
         free(aux);
     }
-    else printf("stack vazia.\n");
+    //else printf("stack vazia.\n");
 }
 
 
@@ -48,7 +48,7 @@ int top(node *stack)
     if(stack) return stack->info;
     else
     {
-        printf("stack vazia.\n");
+        //printf("stack vazia.\n");
         return 0;
     }
 }
