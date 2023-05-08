@@ -122,6 +122,8 @@ void quebrar_pilha(node **stack, node **stackInteira, node **stackFracionaria)
     node *stackTemp = NULL;
     int isNatural = 1;
 
+    create_stack(stackTemp);
+
     while(length(*stack) && (top(*stack) != -2) && (top(*stack) != -4))
     {
         push(&stackTemp, top(*stack));
@@ -206,15 +208,11 @@ void concatenar(node **stack, node **stackInteira, node **stackFracionaria)
 
 void show_stack(node *stack)
 {
-    if(stack)
+    while(length(stack))
     {
-        if(!stack->next) printf("%d\n", stack->info);
-        else
-        {
-            if(stack->info == -2) printf(",");
-            else printf("%d", stack->info);
-            show_stack(stack->next);
-        }  
+        if(stack->info == -2) printf(",");
+        else printf("%d", stack->info);
+        pop(&stack);
     }
 }
 
@@ -259,4 +257,6 @@ int main()
     // Printa a pilha.
     printf("Pilha ordenada: ");
     show_stack(stackTotal);
+
+    return 0;
 }
