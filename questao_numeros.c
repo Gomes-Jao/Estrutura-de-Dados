@@ -3,6 +3,10 @@
 #include <ctype.h>
 #include "linked_stack_numeros.h"
 
+// Correções:
+//  - Tratamento de entrada.
+//  - Ordenação da pilha para mostrar o número ordenado da maior forma possível.
+
 void sort_stack(node **stack, int retirar)
 {
     node *auxStack = NULL;
