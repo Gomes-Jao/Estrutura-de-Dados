@@ -95,7 +95,8 @@ void receber_valores(node **stackTotal)
 int quantidade_a_retirar(int max)
 {
     int valor = 0;
-    int intC, valid;
+    int intC;
+    int valid = 1;
     char c;
 
     while(scanf("%c", &c) && c != '\n')
