@@ -95,11 +95,7 @@ void remove_fila(Fila *f, char *nome) {
 void mostra_fila(Fila *f) {
     int i;
     for (i = 0; i < MAX; i++) {
-        // if (strcmp(f->nomes[i], "~") == 0) {
-        //     printf("- ");
-        // } else {
             printf("%s \n", f->nomes[i]);
-        //}
     }
     printf("\n");
 }
@@ -132,8 +128,6 @@ int main() {
         printf("0 - Sair\n");
         printf("\nOpcao: ");
         scanf(" %c", &opcao);
-
-        //clearStdin();
 
         if(!isdigit(opcao) || !clearStdin())
         {
