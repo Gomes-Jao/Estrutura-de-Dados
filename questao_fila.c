@@ -81,7 +81,7 @@ void remove_fila(Fila *f, char *nome) {
         else valid = 0;
     }
 
-    if(valid == 0) printf("\nNome nao Encontrado. Tente novamente.\n\n");
+    if(valid == 0) printf("\nNome nao Encontrado. Tente novamente.\n");
     else if (valid == 1)
     {
         for (; i < f->fim-1; i++) {
@@ -129,7 +129,9 @@ int main() {
         printf("\nOpcao: ");
         scanf(" %c", &opcao);
 
-        if(!isdigit(opcao) || !clearStdin())
+        bool unique = clearStdin();
+
+        if(!isdigit(opcao) || !unique)
         {
             opcao = 5;
         }
