@@ -65,8 +65,8 @@ void desenfileirar(Fila *f) {
 }
 
 void remove_fila(Fila *f, char *nome) {
-    int i, k;
-    int valid = 1;
+    int i;
+    int valid = f->fim == 0 ? 0 : 1;
 
     for(int k = 0; nome[k] != '\0'; k++)
     {
@@ -82,7 +82,7 @@ void remove_fila(Fila *f, char *nome) {
     }
 
     if(valid == 0) printf("\nNome nao Encontrado. Tente novamente.\n\n");
-    else if(valid == 1)
+    else if (valid == 1)
     {
         for (; i < f->fim-1; i++) {
             strcpy(f->nomes[i], f->nomes[i+1]);
