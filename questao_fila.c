@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 #include <stdbool.h>
@@ -28,11 +29,11 @@ void insere_fila(Fila *f, char *nome) {
         if(!isalpha(nome[k]) && nome[k] != ' ') valid = 0;
     }
 
-    if(valid == 0) printf("\nNome Invalido. Tente novamente.\n\n");
+    if(valid == 0) printf("\nNome invalido. Tente novamente.\n\n");
 
     else if(f->fim == MAX)
     {
-        printf("\nFila Cheia.\n\n");
+        printf("\nFila cheia.\n\n");
     }
     else
     {
@@ -53,7 +54,7 @@ void insere_fila(Fila *f, char *nome) {
 void desenfileirar(Fila *f) {
     int i;
 
-    if(f->fim == 0) printf("\nFila Vazia.\n");
+    if(f->fim == 0) printf("\nFila vazia.\n");
     else
     {
         for (i = 0; i < f->fim-1; i++) {
@@ -62,6 +63,20 @@ void desenfileirar(Fila *f) {
         strcpy(f->nomes[i], "~");
         f->fim--;
     }
+}
+
+int contar_gaps(Fila *f, int inicio, int fim)
+{
+    int quantidade = 0;
+
+    printf("Inicio: %d\nFim: %d", inicio, fim);
+
+    for(int i = inicio; i <= fim; i++)
+    {
+        if(strcmp(f->nomes[i], "~") == 0) quantidade++;
+    }
+    printf("Quantidade: %d\n\n", quantidade);
+    return quantidade;
 }
 
 void remove_fila(Fila *f, char *nome) {
@@ -81,15 +96,24 @@ void remove_fila(Fila *f, char *nome) {
         else valid = 0;
     }
 
-    if(valid == 0) printf("\nNome nao Encontrado. Tente novamente.\n");
+    if(valid == 0) printf("\nNome nao encontrado. Tente novamente.\n");
     else if (valid == 1)
     {
-        for (; i < f->fim-1; i++) {
-            strcpy(f->nomes[i], f->nomes[i+1]);
+        if(contar_gaps(f, f->inicio, MAX) < 2 * contar_gaps(f, f->fim, MAX))
+        {
+            strcpy(f->nomes[i], "~");
         }
-        strcpy(f->nomes[i], "~");
-        f->fim--;
+        else
+        {
+            for (; i < f->fim-1; i++) {
+                strcpy(f->nomes[i], f->nomes[i+1]);
+            }
+            strcpy(f->nomes[i], "~");
+            f->fim--;
+        }
     }
+        
+        
 }
 
 void mostra_fila(Fila *f) {
